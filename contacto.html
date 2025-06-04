@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Ventaccesorios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesupp.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-nav">
+            <div class="logotop">
+                <img src="azumanga.png" alt="Logo Ventaccesorios" width="50" height="50">
+                <h3>Ventaccesorios</h3>
+            </div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Sobre nosotros</a>
+                <a href="carrito.html">Carrito</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contacto">
+        
+        <h2>Soporte</h2>
+        <img src="chirno.jpg" alt="Icono Soporte" class="icono-soporte">
+
+        <form>
+            <label for="categoria">Seleccione una categoría de soporte:</label>
+            <select id="categoria">
+                <option>(Seleccione la categoría)</option>
+                <option>Problema con el pedido</option>
+                <option>Consulta de productos</option>
+                <option>Problema con el pago</option>
+                <option>Otros</option>
+            </select>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com">
+
+            <label for="detalle">Cuéntanos más a detalle:</label>
+            <textarea id="detalle"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+    </main>
+
+    <footer class="footer-simple">
+        <div class="footer-column">
+            <h4>VENTACCESORIOS</h4>
+            <p>All rights reserved 2025</p>
+            <p><a href="#" id="ubicacion-link" onclick="abrirModal(); return false;">📍 Dónde nos ubicamos</a></p>
+        </div>
+
+    <div class="footer-column">
+        <h4>LICENCIAS</h4>
+        <p>Política de Privacidad</p>
+        <p>Términos de Servicio</p>
+    </div>
+
+    <div class="footer-column">
+        <h4>CONTACTO</h4>
+        <a href="contacto.html">Contacto</p>
+        <a href="about.html">Sobre Nosotros</p>
+    </div>
+</footer>
+
+<div id="modalMapa" class="modal-mapa">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h3>Ubicación de Nuestro negocio:</h3>
+        <iframe id="mapa-frame" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+
+<script>
+let latitud = '';
+let longitud = '';
+
+function mostrarUbicacion(posicion) {
+    latitud = posicion.coords.latitude.toFixed(6);
+    longitud = posicion.coords.longitude.toFixed(6);
+}
+
+function errorUbicacion() {
+    document.getElementById('ubicacion-link').textContent = 'Ubicación no disponible';
+}
+
+function abrirModal() {
+    if (latitud && longitud) {
+        const iframe = document.getElementById('mapa-frame');
+        iframe.src = `https://www.google.com/maps?q=${latitud},${longitud}&hl=es&z=16&output=embed`;
+        document.getElementById('modalMapa').style.display = 'block';
+    } else {
+        alert('No se pudo obtener la ubicación.');
+    }
+}
+
+function cerrarModal() {
+    document.getElementById('modalMapa').style.display = 'none';
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(mostrarUbicacion, errorUbicacion);
+} else {
+    errorUbicacion();
+}
+</script>
+
+<a href="https://wa.me/573006284358" 
+    class="whatsapp-float" 
+    target="_blank" 
+    title="Escríbenos por WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+        alt="WhatsApp" 
+        width="50" 
+        height="50">
+    </a>
+</body>
+</html>

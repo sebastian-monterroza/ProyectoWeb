@@ -1,0 +1,276 @@
+:root {
+    --primary-color: #f8f9fa; /* Un gris claro como primario */
+    --secondary-color: #343a40; /* Un gris oscuro como secundario */
+    --accent-color: #007bff; /* Un azul como acento */
+    --success-color: #28a745; /* Un verde para el botón de finalizar compra */
+    --text-color: #212529; /* Un negro suave para el texto */
+    --border-color: #dee2e6; /* Un gris claro para los bordes */
+    --background-alt: #e9ecef; /* Un gris muy claro para fondos alternativos */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    background-color: rgb(180, 127, 196);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-nav {
+    display: flex;
+    justify-content: flex-end; /* Alineando los enlaces a la derecha */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Añadiendo padding horizontal */
+}
+
+.top-nav nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.top-nav nav a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.top-nav nav a:hover {
+    color: var(--accent-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: flex; /* Para la estructura general de la página principal */
+}
+
+aside {
+    width: 250px;
+    padding: 1.5rem;
+    border-right: 1px solid var(--border-color);
+}
+
+aside img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+aside h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+#category-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+#category-list.expanded {
+    max-height: 500px;
+}
+
+#category-list li a {
+    display: block;
+    padding: 0.7rem 0;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+#category-list li a:hover {
+    color: var(--accent-color);
+    padding-left: 0.5rem;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    font-size: 2.5em;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.producto {
+    background-color: var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.producto:hover {
+    transform: scale(1.02);
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.producto h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.producto h3 a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.producto h3 a:hover {
+    color: var(--accent-color);
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 1.5rem;
+    background-color: white;
+    color: var(--secondary-color);
+    margin-top: 2rem;
+}
+
+/* Estilos específicos para la página de compra (stylebuy.css) */
+.pago-envio {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 350px; /* Ajustando el ancho de la columna de datos del producto */
+    gap: 2rem;
+    max-width: 960px;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pago-envio h2 {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    font-size: 2em;
+}
+
+.formulario label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.formulario select,
+.formulario input[type="text"],
+.formulario textarea {
+    width: calc(100% - 12px); /* Ajuste para el padding */
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.puntos-pago {
+    background-color: var(--background-alt);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.puntos-pago label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.datos-producto {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.datos-producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.datos-producto h3 {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.btn-finalizar {
+    grid-column: span 2;
+    margin-top: 2rem;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: fit-content; /* Ajustar el ancho al contenido */
+    display: block;
+    margin-left: auto; /* Alinear a la derecha */
+}
+
+.btn-finalizar:hover {
+    background-color: lightgreen;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgb(180, 127, 196);
+    color: var(--secondary-color);
+    margin-top: 2rem;
+}

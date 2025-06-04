@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Ventaccesorios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylecart.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <nav>
+                <a href="index.html">Página Principal</a>
+                <a href="about.html">Sobre nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="logotop">
+                <img src="azumanga.png" alt="Logo Ventaccesorios" width="50" height="50">
+                <h4>Ventaccesorios</h4>
+            </div>
+        </div>
+    </header>
+
+    <main class="carrito">
+        <h2>Carrito de Compras</h2>
+
+        <div id="carrito-items">
+            <p id="carrito-vacio">El carrito está vacío.</p>
+        </div>
+
+        <div class="carrito-resumen">
+            <div class="total">
+                <strong>Total:</strong> <span id="total-precio">$0.00</span>
+            </div>
+            <button class="btn-finalizar-compra">Finalizar Compra</button>
+            <button class="btn-seguir-comprando"><a href="index.html">Seguir Comprando</button></a>
+        </div>
+    </main>
+
+    <footer class="footer-simple">
+        <div class="footer-column">
+            <h4>VENTACCESORIOS</h4>
+            <p>All rights reserved 2025</p>
+            <p><a href="#" id="ubicacion-link" onclick="abrirModal(); return false;">📍 Dónde nos ubicamos</a></p>
+        </div>
+
+    <div class="footer-column">
+        <h4>LICENCIAS</h4>
+        <p>Política de Privacidad</p>
+        <p>Términos de Servicio</p>
+    </div>
+
+    <div class="footer-column">
+        <h4>CONTACTO</h4>
+        <a href="contacto.html">Contacto</p>
+        <a href="about.html">Sobre Nosotros</p>
+    </div>
+</footer>
+
+    <div id="modalMapa" class="modal-mapa">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h3>Ubicación de Nuestro negocio:</h3>
+        <iframe id="mapa-frame" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+
+<script>
+let latitud = '';
+let longitud = '';
+
+function mostrarUbicacion(posicion) {
+    latitud = posicion.coords.latitude.toFixed(6);
+    longitud = posicion.coords.longitude.toFixed(6);
+}
+
+function errorUbicacion() {
+    document.getElementById('ubicacion-link').textContent = 'Ubicación no disponible';
+}
+
+function abrirModal() {
+    if (latitud && longitud) {
+        const iframe = document.getElementById('mapa-frame');
+        iframe.src = `https://www.google.com/maps?q=${latitud},${longitud}&hl=es&z=16&output=embed`;
+        document.getElementById('modalMapa').style.display = 'block';
+    } else {
+        alert('No se pudo obtener la ubicación.');
+    }
+}
+
+function cerrarModal() {
+    document.getElementById('modalMapa').style.display = 'none';
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(mostrarUbicacion, errorUbicacion);
+} else {
+    errorUbicacion();
+}
+</script>
+</body>
+</html>
